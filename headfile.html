@@ -1,0 +1,37 @@
+<!--HTML document to define the layout of the head and the navigation bar-->
+
+<div id="container">
+	<div id="header">
+		<a href="index.php"><img src=workedup_logo1.png></a> 
+		<h1>
+			<?php 
+				date_default_timezone_set('Asia/Colombo');
+				echo date('d F Y H:i:s');
+			?> 
+		</h1>
+	</div>
+	
+	<div id="navigation">
+		<ul>
+			<li><a href="index.php">Index</a></li>
+			<li><a href="basket.php">My Basket</a></li>
+			<li><a href="register.php">Register</a></li>
+			<?php
+				if(!isset($_SESSION['c_userid'])){
+					echo"<li>";
+					echo"<a href='login.php'>Login</a>";	
+					echo"</li>";
+				}
+			?>
+			
+			<?php
+				if(isset($_SESSION['c_userid'])){
+					echo"<li>";
+					echo"<a href='logout.php'>Logout</a>";	
+					echo"</li>";
+				}
+			?>	
+		</ul>
+	</div>
+	
+	<div id="content">	
